@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'prediction/screens/text_predication.dart';
+import 'prediction/screens/text_question_answer.dart';
 
 void main() {
   runApp(const MyApp());
@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [TextPrediction()],
+            children: const [TextQnA()],
           ),
         ),
       ),

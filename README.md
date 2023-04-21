@@ -1,16 +1,3 @@
 # flutter_gpt
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ To use the project, simply replace the API key in constant.dart with your own and start asking questions. The project is designed to be easy to use, with a simple and intuitive interface. To ask a question, simply type it into the text box and press the 'Ask' button. The project will then use the latest GPT APIs to provide an accurate and helpful answer. If you encounter any issues or have any feedback, please feel free to contact me.

@@ -1,16 +1,16 @@
 import 'package:chat_gpt_sdk/chat_gpt_sdk.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gpt/values/constants.dart';
 
-class TextPrediction extends StatefulWidget {
-  const TextPrediction({super.key});
+class TextQnA extends StatefulWidget {
+  const TextQnA({super.key});
 
   @override
-  State<TextPrediction> createState() => _TextPredictionState();
+  State<TextQnA> createState() => _TextQnAState();
 }
 
-class _TextPredictionState extends State<TextPrediction> {
+class _TextQnAState extends State<TextQnA> {
   late OpenAI openAI;
-  String token = "";
   final _textController = TextEditingController();
   String answer = '';
   bool isLoading = false;
@@ -18,8 +18,8 @@ class _TextPredictionState extends State<TextPrediction> {
   void initState() {
     super.initState();
     openAI = OpenAI.instance.build(
-      token: token,
-      baseOption: HttpSetup(receiveTimeout: const Duration(seconds: 5)),
+      token: Strings.openGptToken,
+      baseOption: HttpSetup(receiveTimeout: const Duration(seconds: 8)),
     );
     _textController.addListener(() {
       setState(() {});
@@ -54,18 +54,26 @@ class _TextPredictionState extends State<TextPrediction> {
                   isLoading = true;
                   setState(() {});
 
-                  final response = await openAI.onCompletion(request: request);
+                  final response = await openAI
+                      .onCompletion(request: request)
+                      .onError((error, stackTrace) {
+                    isLoading = false;
+                    answer = 'Something went wrong! ';
+                    setState(() {});
+                    return null;
+                  });
                   answer = (response?.choices.first.text).toString();
                   isLoading = false;
                   setState(() {});
                 },
                 child: Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                        color: Colors.amber,
-                        borderRadius: BorderRadius.circular(12)),
-                    child: const Text('Get Answer')),
-              )
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                      color: Colors.amber,
+                      borderRadius: BorderRadius.circular(12)),
+                  child: const Text('Get Answer'),
+                ),
+              ),
       ],
     );
   }

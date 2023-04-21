@@ -1,7 +1,5 @@
 # flutter_gpt
 
- # Project Name
-
 ## Description
 
 The project uses the latest chatGPt API to return the answer user ask. It is built on Flutter and is designed to be easy to use, with a simple and intuitive interface. To use the project, simply replace the API key with your own and start asking questions. If you encounter any issues or have any feedback, please feel free to contact us.
